@@ -44,7 +44,7 @@ function hoursWorkedOnDate(employeeRecord, targetDate){
 }
 
 function wagesEarnedOnDate(employeeRecord, targetDate){
-    return hoursWorkedOnDate.call(employeeRecord, targetDate)*employeeRecord.payPerHour
+    return hoursWorkedOnDate(employeeRecord, targetDate)*employeeRecord.payPerHour
     //const inEvent = employeeRecord.timeInEvents.find(inEvent =>inEvent.date === targetDate)
     //const outEvent =  employeeRecord.timeOutEvents.find(outEvent => outEvent.date === targetDate)
     //return (outEvent.hour - inEvent.hour)*employeeRecord.payPerHour/100
@@ -52,7 +52,20 @@ function wagesEarnedOnDate(employeeRecord, targetDate){
 
 function allWagesFor(employeeRecord){
     for (let i=0; i<employeeRecord.timeInEvents.length; i++){
-        
+    const wagesPerDate = wagesEarnedOnDate(employeeRecord, employeeRecord.timeInEvents[i].date)
+    let sum = 0
+    sum += wagesPerDate
+    return wagesPerDate
     }
-    employeeRecord.timeInEvents.reduce(wagesEarnedOnDate(employeeRecord, targetDate))
+}
+    //employeeRecord.timeInEvents.reduce(wagesEarnedOnDate(employeeRecord, targetDate))
+
+    /*const wages = employeeRecord.timeInEvents.map(targetDate => wagesEarnedOnDate(targetDate))
+    let reducedWages= wages.reduce(function(memo, targetDate){
+        return memo + wagesEarnedOnDate(employee, targetDate)
+        }, 0)
+        //I HAVE NO IDEA WHAT THIS MEANS*/
+
+function calculatePayroll(){
+
 }
